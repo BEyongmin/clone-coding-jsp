@@ -345,3 +345,84 @@ section{padding:120px 0;position:relative}
 .info-row .lbl{font-family:'Archivo Black',sans-serif;font-size:12px;letter-spacing:.18em;color:var(--orange);width:90px;flex-shrink:0;padding-top:2px}
 .info-row .val{font-size:15px;color:#fff}
 @media (max-width: 880px){.contact-wrap{grid-template-columns:1fr;gap:36px}}
+
+/* NOTICE - TABS & TOOLBAR */
+.page{padding:80px 0 120px}
+.tabs{display:flex;gap:8px;border-bottom:1px solid var(--gray-200);margin:60px 0 36px;flex-wrap:wrap}
+.tab{padding:14px 24px;font-weight:700;font-size:15px;color:var(--gray-600);cursor:pointer;border-bottom:3px solid transparent;margin-bottom:-1px;transition:all .15s ease;background:none;border-top:0;border-left:0;border-right:0;font-family:inherit;display:inline-block}
+.tab:hover{color:var(--ink)}
+.tab.active{color:var(--orange);border-bottom-color:var(--orange)}
+.tab .count{display:inline-block;background:var(--gray-100);color:var(--gray-600);font-size:12px;padding:2px 8px;border-radius:999px;margin-left:6px;font-weight:700}
+.tab.active .count{background:var(--orange);color:#fff}
+.toolbar{display:flex;gap:12px;align-items:center;justify-content:space-between;flex-wrap:wrap;margin-bottom:24px}
+.search{flex:1;max-width:360px;position:relative}
+.search input{width:100%;padding:12px 16px;border-radius:999px;border:1px solid var(--gray-200);background:#fff;font-family:inherit;font-size:14px;outline:none;transition:border-color .15s ease}
+.search input:focus{border-color:var(--orange)}
+select{padding:10px 16px;border:1px solid var(--gray-200);border-radius:999px;background:#fff;font-family:inherit;font-size:14px;color:var(--gray-600);cursor:pointer}
+.notice-list{background:#fff;border:1px solid var(--gray-200);border-radius:var(--radius);overflow:hidden}
+.notice-item{display:grid;grid-template-columns:80px 1fr auto auto;align-items:center;gap:20px;padding:22px 26px;border-bottom:1px solid var(--gray-100);cursor:pointer;transition:background .15s ease}
+.notice-item:last-child{border-bottom:0}
+.notice-item:hover{background:#FAFAFA}
+.notice-badge{font-family:'Archivo Black',sans-serif;font-size:11px;letter-spacing:.15em;padding:6px 12px;border-radius:6px;background:var(--black);color:#fff;text-align:center}
+.notice-badge.data{background:var(--gray-800)}
+.notice-badge.new{background:var(--orange)}
+.notice-title{font-weight:600;font-size:15.5px;color:var(--ink)}
+.notice-meta{font-size:13px;color:var(--gray-400);font-weight:600}
+.notice-file{font-size:12px;color:var(--orange);font-weight:700;padding:5px 10px;border:1px solid var(--orange);border-radius:999px}
+@media (max-width: 880px){.notice-item{grid-template-columns:auto 1fr;gap:10px;padding:18px} .notice-meta, .notice-file{grid-column:2;font-size:12px} .notice-title{grid-column:2}}
+.pagination{display:flex;justify-content:center;gap:6px;margin:48px 0 0}
+.pagination button{width:40px;height:40px;border-radius:8px;border:1px solid var(--gray-200);background:#fff;font-weight:700;font-size:14px;cursor:pointer;color:var(--gray-600);font-family:inherit}
+.pagination button:hover{background:#FAFAFA}
+.pagination button.active{background:var(--orange);color:#fff;border-color:var(--orange)}
+
+/* NOTICE DETAIL */
+.detail-head{padding:40px 0 32px;border-bottom:1px solid var(--gray-200);margin-bottom:0}
+.detail-tag{display:inline-block;font-size:12px;font-weight:700;letter-spacing:.1em;padding:5px 12px;border-radius:6px;background:var(--black);color:#fff;margin-bottom:16px}
+.detail-title{font-family:'Pretendard',sans-serif;font-weight:800;font-size:28px;line-height:1.4;margin:0 0 12px;letter-spacing:-0.01em}
+.detail-meta{font-size:14px;color:var(--gray-400);font-weight:500}
+.file-box{display:flex;align-items:center;gap:14px;border-top:1px solid var(--gray-200);border-bottom:1px solid var(--gray-200);padding:16px 4px;margin:24px 0 32px;font-size:14.5px}
+.file-icon{font-size:16px}
+.file-label{font-weight:700;color:var(--ink)}
+.file-divider{color:var(--gray-200)}
+.file-name{color:var(--gray-600)}
+.detail-content{font-size:16px;line-height:1.9;color:var(--ink);margin-bottom:60px}
+.detail-content p{margin-bottom:20px}
+.detail-siblings{border-top:1px solid var(--gray-200)}
+.sibling-item{display:flex;align-items:center;gap:20px;padding:20px 0;border-bottom:1px solid var(--gray-100);font-size:14.5px}
+.sibling-item:hover .sibling-title{color:var(--orange)}
+.sibling-label{font-weight:800;color:var(--gray-400);width:60px;flex-shrink:0}
+.sibling-title{color:var(--ink);font-weight:600}
+.detail-nav{padding-top:32px;text-align:right}
+
+/* ===== NOTICE DETAIL (post-page) — 원본 목표 디자인 ===== */
+.post-page{padding:140px 0 100px;background:#fff;min-height:60vh}
+.post-page .container{max-width:960px}
+.post-back{font-size:13px;color:var(--gray-400);margin-bottom:28px;font-weight:600;letter-spacing:.04em}
+.post-back a:hover{color:var(--orange)}
+.post-header{padding-bottom:24px;border-bottom:1px solid var(--gray-200)}
+.post-header h1{font-size:clamp(24px,3vw,32px);font-weight:800;line-height:1.35;letter-spacing:-0.02em;color:var(--ink);margin-bottom:14px}
+.post-header h1 .tag{color:var(--ink);font-weight:800;margin-right:6px}
+.post-meta{font-size:13.5px;color:var(--gray-400)}
+.post-attach{display:flex;align-items:center;gap:18px;padding:18px 0;border-bottom:1px solid var(--gray-200);font-size:14px}
+.post-attach .lbl{display:flex;align-items:center;gap:8px;font-weight:700;color:var(--ink);min-width:90px}
+.post-attach .lbl::before{content:"📎";font-size:14px}
+.post-attach .div{width:1px;height:16px;background:var(--gray-200)}
+.post-attach a{color:var(--ink);font-weight:500}
+.post-attach a:hover{color:var(--orange);text-decoration:underline}
+.post-attach .size{color:var(--gray-400);margin-left:4px;font-size:13px}
+.post-body{padding:36px 0 48px;border-bottom:1px solid var(--gray-200)}
+.post-body p{font-size:15.5px;line-height:1.95;color:var(--gray-800);margin-bottom:14px}
+.post-body strong{color:var(--ink);font-weight:700}
+.post-nav{padding:8px 0 0}
+.post-nav .row{display:grid;grid-template-columns:64px 1fr;gap:24px;padding:18px 0;border-bottom:1px solid var(--gray-200);font-size:14px}
+.post-nav .row:last-child{border-bottom:0}
+.post-nav .dir{font-weight:800;color:var(--ink)}
+.post-nav .row a:hover{color:var(--orange)}
+.post-nav .cat{color:var(--ink);font-weight:700;margin-right:4px}
+.post-actions{margin-top:40px;display:flex;justify-content:flex-end;gap:8px}
+@media (max-width: 880px){
+  .post-page{padding:110px 0 60px}
+  .post-attach{flex-wrap:wrap;gap:10px}
+  .post-attach .div{display:none}
+  .post-nav .row{grid-template-columns:60px 1fr;gap:12px;padding:14px 0}
+}

@@ -29,6 +29,9 @@ public class Notice {
     @Column(name = "file_name")
     private String fileName;
 
+    @Column(name = "file_size")
+    private String fileSize;
+
     @Column(name = "view_count", nullable = false)
     private Integer viewCount = 0;
 

@@ -25,18 +25,57 @@
 
 <main class="page">
   <div class="container">
+
+    <!-- 탭 -->
+    <div class="tabs">
+      <a href="${pageContext.request.contextPath}/notices?type=all&sort=${sort}"
+         class="tab ${type == 'all' ? 'active' : ''}">전체 <span class="count">${allCount}</span></a>
+      <a href="${pageContext.request.contextPath}/notices?type=notice&sort=${sort}"
+         class="tab ${type == 'notice' ? 'active' : ''}">공지사항 <span class="count">${noticeCount}</span></a>
+      <a href="${pageContext.request.contextPath}/notices?type=data&sort=${sort}"
+         class="tab ${type == 'data' ? 'active' : ''}">자료실 <span class="count">${dataCount}</span></a>
+    </div>
+
+    <!-- 검색 + 정렬 -->
+    <form class="toolbar" method="get" action="${pageContext.request.contextPath}/notices">
+      <input type="hidden" name="type" value="${type}" />
+      <div class="search">
+        <input type="text" name="keyword" value="${keyword}" placeholder="제목으로 검색하기" />
+      </div>
+      <select name="sort" onchange="this.form.submit()">
+        <option value="new" ${sort == 'new' ? 'selected' : ''}>최신순</option>
+        <option value="old" ${sort == 'old' ? 'selected' : ''}>오래된순</option>
+      </select>
+      <button type="submit" style="display:none"></button>
+    </form>
+
+    <!-- 목록 -->
     <div class="notice-list">
-      <c:forEach var="notice" items="${notices}">
+      <c:forEach var="notice" items="${notices}" varStatus="status">
         <div class="notice-item" onclick="location.href='${pageContext.request.contextPath}/notices/${notice.id}'">
-          <span class="notice-badge ${notice.type == 'data' ? 'data' : ''}">
-            ${notice.type == 'data' ? '자료' : '공지'}
-          </span>
+        <span class="notice-badge ${notice.type == 'data' ? 'data' : (status.first && sort == 'new' ? 'new' : '')}">
+          <c:choose>
+            <c:when test="${notice.type == 'data'}">자료</c:when>
+            <c:when test="${status.first && sort == 'new'}">NEW</c:when>
+            <c:otherwise>공지</c:otherwise>
+          </c:choose>
+        </span>
           <span class="notice-title">${notice.title}</span>
-          <span class="notice-meta">${notice.postDate}</span>
+          <span class="notice-meta">${notice.postDate}<c:if test="${notice.type == 'notice'}"> · 조회 ${notice.viewCount}</c:if></span>
           <span class="notice-file">${notice.type == 'data' ? 'PDF ↓' : '자세히 →'}</span>
         </div>
       </c:forEach>
+      <c:if test="${empty notices}">
+        <div style="padding:40px 26px;text-align:center;color:var(--gray-400)">검색 결과가 없습니다.</div>
+      </c:if>
     </div>
+
+    <div class="pagination">
+      <button>‹</button>
+      <button class="active">1</button>
+      <button>›</button>
+    </div>
+
   </div>
 </main>
 

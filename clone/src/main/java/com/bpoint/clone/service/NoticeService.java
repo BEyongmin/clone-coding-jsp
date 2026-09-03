@@ -1,6 +1,8 @@
 package com.bpoint.clone.service;
 
+import java.util.Comparator;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import org.springframework.stereotype.Service;
 
@@ -12,7 +14,7 @@ import lombok.RequiredArgsConstructor;
 @Service
 @RequiredArgsConstructor
 public class NoticeService {
-    
+
     private final NoticeRepository noticeRepository;
 
     public List<Notice> getAllNotices() {
@@ -20,7 +22,40 @@ public class NoticeService {
     }
 
     public Notice getNoticeById(Long id) {
-    return noticeRepository.findById(id)
-            .orElseThrow(() -> new IllegalArgumentException("해당 공지사항이 없습니다. id=" + id));
+        return noticeRepository.findById(id)
+                .orElseThrow(() -> new IllegalArgumentException("해당 공지사항이 없습니다. id=" + id));
+    }
+
+    public List<Notice> searchNotices(String type, String keyword, String sort) {
+        List<Notice> all = noticeRepository.findAll();
+
+        List<Notice> filtered = all.stream()
+                .filter(n -> type.equals("all") || n.getType().equals(type))
+                .filter(n -> keyword.isBlank() || n.getTitle().contains(keyword))
+                .collect(Collectors.toList());
+
+        if (sort.equals("old")) {
+            filtered.sort(Comparator.comparing(Notice::getPostDate));
+        } else {
+            filtered.sort(Comparator.comparing(Notice::getPostDate).reversed());
+        }
+
+        return filtered;
+    }
+
+    public long countByType(String type) {
+        List<Notice> all = noticeRepository.findAll();
+        if (type.equals("all")) {
+            return all.size();
+        }
+        return all.stream().filter(n -> n.getType().equals(type)).count();
+    }
+
+    public Notice getPrevNotice(Long id) {
+    return noticeRepository.findFirstByIdLessThanOrderByIdDesc(id).orElse(null);
+    }
+
+    public Notice getNextNotice(Long id) {
+        return noticeRepository.findFirstByIdGreaterThanOrderByIdAsc(id).orElse(null);
     }
 }
