@@ -41,13 +41,13 @@ public class HomeController {
         return "event";
     }
 
-    @GetMapping("/news")
-    public String news() {
-        return "news";
-    }
+    // @GetMapping("/news")
+    // public String news() {
+    //     return "news";
+    // }
 
-    @GetMapping("/news-detail")
-    public String newsDetail() {
-        return "news-detail";
-    }
+    // @GetMapping("/news-detail")
+    // public String newsDetail() {
+    //     return "news-detail";
+    // }
 }

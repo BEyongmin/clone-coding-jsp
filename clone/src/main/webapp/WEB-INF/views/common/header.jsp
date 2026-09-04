@@ -15,7 +15,7 @@
       <a href="${pageContext.request.contextPath}/" class="${(path == '/' || path == '') ? 'active' : ''}">홈</a>
       <a href="${pageContext.request.contextPath}/about" class="${(path == '/about' || path == '/story') ? 'active' : ''}">소개</a>
       <a href="${pageContext.request.contextPath}/programs" class="${(path == '/programs' || path == '/class' || path == '/event') ? 'active' : ''}">프로그램</a>
-      <a href="${pageContext.request.contextPath}/news" class="${(path == '/news' || path == '/news-detail') ? 'active' : ''}">소식</a>
+      <a href="${pageContext.request.contextPath}/news" class="${fn:startsWith(path, '/news') ? 'active' : ''}">소식</a>
       <a href="${pageContext.request.contextPath}/notices" class="${fn:startsWith(path, '/notices') ? 'active' : ''}">공지</a>
       <a href="${pageContext.request.contextPath}/contact" class="${path == '/contact' ? 'active' : ''}">문의</a>
       <a class="cta" href="https://smartstore.naver.com" target="_blank" rel="noopener">클래스 신청 →</a>
