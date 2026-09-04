@@ -20,4 +20,29 @@ public class HomeController {
     public String story() {
         return "story";
     }
+
+    @GetMapping("/programs")
+    public String programs() {
+        return "programs";
+    }
+
+    @GetMapping("/class")
+    public String classPage() {
+        return "class";
+    }
+
+    @GetMapping("/contact")
+    public String contact() {
+        return "contact";
+    }
+
+    @GetMapping("/event")
+    public String event() {
+        return "event";
+    }
+
+    @GetMapping("/news")
+    public String news() {
+        return "news";
+    }
 }
