@@ -6,11 +6,17 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import com.bpoint.clone.service.AdminService;
+
 import jakarta.servlet.http.HttpSession;
+import lombok.RequiredArgsConstructor;
 
 @Controller
+@RequiredArgsConstructor
 public class AdminController {
-        private static final String ADMIN_PASSWORD = "bpoint2026";
+
+    private final AdminService adminService;
+
     private static final String SESSION_KEY = "adminLoggedIn";
 
     @GetMapping("/admin/login")
@@ -25,7 +31,7 @@ public class AdminController {
     public String doLogin(@RequestParam String password,
                            HttpSession session,
                            RedirectAttributes redirectAttributes) {
-        if (ADMIN_PASSWORD.equals(password)) {
+        if (adminService.checkPassword(password)) {
             session.setAttribute(SESSION_KEY, true);
             return "redirect:/admin";
         } else {
