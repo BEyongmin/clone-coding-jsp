@@ -42,7 +42,7 @@
       <div class="search">
         <input type="text" name="keyword" value="${keyword}" placeholder="제목으로 검색하기" />
       </div>
-      <select name="sort" onchange="this.form.submit()">
+      <select name="sort" class="sort" onchange="this.form.submit()">
         <option value="new" ${sort == 'new' ? 'selected' : ''}>최신순</option>
         <option value="old" ${sort == 'old' ? 'selected' : ''}>오래된순</option>
       </select>
@@ -61,7 +61,12 @@
           </c:choose>
         </span>
           <span class="notice-title">${notice.title}</span>
-          <span class="notice-meta">${notice.postDate}<c:if test="${notice.type == 'notice'}"> · 조회 ${notice.viewCount}</c:if></span>
+          <span class="notice-meta">${notice.postDate}
+            <c:choose>
+              <c:when test="${notice.type == 'notice'}"> · 조회 ${notice.viewCount}</c:when>
+              <c:when test="${notice.type == 'data'}"> · ${notice.fileSize}</c:when>
+            </c:choose>
+        </span>
           <span class="notice-file">${notice.type == 'data' ? 'PDF ↓' : '자세히 →'}</span>
         </div>
       </c:forEach>

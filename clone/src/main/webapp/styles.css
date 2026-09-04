@@ -126,7 +126,7 @@ footer.site-foot{background:#0A0F12;color:#9AA1A6;padding:60px 0 32px;border-top
 
 section{padding:120px 0;position:relative}
 
-/* HOME - VISION (about 섹션) */
+/* HOME - VISION*/
 .vision-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:40px}
 .vision-card{background:#fff;border-radius:var(--radius);padding:36px 30px;border:1px solid var(--gray-200);transition:transform .25s ease, box-shadow .25s ease, border-color .25s ease}
 .vision-card:hover{transform:translateY(-4px);box-shadow:0 16px 40px rgba(0,0,0,.06);border-color:var(--orange)}
@@ -258,7 +258,7 @@ footer.site-foot{background:#0A0F12;color:#9AA1A6;padding:60px 0 32px;border-top
 .reveal{opacity:0;transform:translateY(20px);transition:all .6s ease}
 .reveal.in{opacity:1;transform:translateY(0)}
 
-/* PROGRAM CARDS (Home, Programs 페이지 공통) */
+/* PROGRAM CARDS */
 .program-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:28px}
 .program{position:relative;border-radius:20px;overflow:hidden;padding:48px 40px;color:#fff;min-height:480px;display:flex;flex-direction:column;justify-content:space-between;transition:transform .25s ease}
 .program:hover{transform:translateY(-4px)}
@@ -299,7 +299,7 @@ footer.site-foot{background:#0A0F12;color:#9AA1A6;padding:60px 0 32px;border-top
 
 section{padding:120px 0;position:relative}
 
-/* HOME - VISION (about 섹션) */
+/* HOME - VISION*/
 .vision-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:40px}
 .vision-card{background:#fff;border-radius:var(--radius);padding:36px 30px;border:1px solid var(--gray-200);transition:transform .25s ease, box-shadow .25s ease, border-color .25s ease}
 .vision-card:hover{transform:translateY(-4px);box-shadow:0 16px 40px rgba(0,0,0,.06);border-color:var(--orange)}
@@ -346,7 +346,7 @@ section{padding:120px 0;position:relative}
 .info-row .val{font-size:15px;color:#fff}
 @media (max-width: 880px){.contact-wrap{grid-template-columns:1fr;gap:36px}}
 
-/* NOTICE - TABS & TOOLBAR */
+/* ===== NOTICE LIST PAGE ===== */
 .page{padding:80px 0 120px}
 .tabs{display:flex;gap:8px;border-bottom:1px solid var(--gray-200);margin:60px 0 36px;flex-wrap:wrap}
 .tab{padding:14px 24px;font-weight:700;font-size:15px;color:var(--gray-600);cursor:pointer;border-bottom:3px solid transparent;margin-bottom:-1px;transition:all .15s ease;background:none;border-top:0;border-left:0;border-right:0;font-family:inherit;display:inline-block}
@@ -356,16 +356,17 @@ section{padding:120px 0;position:relative}
 .tab.active .count{background:var(--orange);color:#fff}
 .toolbar{display:flex;gap:12px;align-items:center;justify-content:space-between;flex-wrap:wrap;margin-bottom:24px}
 .search{flex:1;max-width:360px;position:relative}
-.search input{width:100%;padding:12px 16px;border-radius:999px;border:1px solid var(--gray-200);background:#fff;font-family:inherit;font-size:14px;outline:none;transition:border-color .15s ease}
+.search input{width:100%;padding:12px 16px 12px 42px;border-radius:999px;border:1px solid var(--gray-200);background:#fff;font-family:inherit;font-size:14px;outline:none;transition:border-color .15s ease}
 .search input:focus{border-color:var(--orange)}
-select{padding:10px 16px;border:1px solid var(--gray-200);border-radius:999px;background:#fff;font-family:inherit;font-size:14px;color:var(--gray-600);cursor:pointer}
+.search::before{content:"⌕";position:absolute;left:16px;top:50%;transform:translateY(-50%);color:var(--gray-400);font-size:18px}
+.sort{padding:10px 16px;border:1px solid var(--gray-200);border-radius:999px;background:#fff;font-family:inherit;font-size:14px;color:var(--gray-600);cursor:pointer}
 .notice-list{background:#fff;border:1px solid var(--gray-200);border-radius:var(--radius);overflow:hidden}
 .notice-item{display:grid;grid-template-columns:80px 1fr auto auto;align-items:center;gap:20px;padding:22px 26px;border-bottom:1px solid var(--gray-100);cursor:pointer;transition:background .15s ease}
 .notice-item:last-child{border-bottom:0}
 .notice-item:hover{background:#FAFAFA}
 .notice-badge{font-family:'Archivo Black',sans-serif;font-size:11px;letter-spacing:.15em;padding:6px 12px;border-radius:6px;background:var(--black);color:#fff;text-align:center}
-.notice-badge.data{background:var(--gray-800)}
 .notice-badge.new{background:var(--orange)}
+.notice-badge.data{background:var(--gray-800)}
 .notice-title{font-weight:600;font-size:15.5px;color:var(--ink)}
 .notice-meta{font-size:13px;color:var(--gray-400);font-weight:600}
 .notice-file{font-size:12px;color:var(--orange);font-weight:700;padding:5px 10px;border:1px solid var(--orange);border-radius:999px}
@@ -394,7 +395,7 @@ select{padding:10px 16px;border:1px solid var(--gray-200);border-radius:999px;ba
 .sibling-title{color:var(--ink);font-weight:600}
 .detail-nav{padding-top:32px;text-align:right}
 
-/* ===== NOTICE DETAIL (post-page) — 원본 목표 디자인 ===== */
+/* ===== NOTICE DETAIL (post-page) */
 .post-page{padding:140px 0 100px;background:#fff;min-height:60vh}
 .post-page .container{max-width:960px}
 .post-back{font-size:13px;color:var(--gray-400);margin-bottom:28px;font-weight:600;letter-spacing:.04em}
@@ -485,7 +486,7 @@ select{padding:10px 16px;border:1px solid var(--gray-200);border-radius:999px;ba
 .programs-section .intro{max-width:760px;margin-bottom:60px}
 .programs-section .intro p{font-size:17px;line-height:1.85;color:var(--gray-600)}
 
-/* 홈 화면 .program(min-height:480px)과 다른 부분만 범위를 좁혀 재정의 */
+/* 홈 화면과 다른 부분만 범위를 좁혀 재정의 */
 .programs-section .program{min-height:520px}
 
 .compare{padding:90px 0 120px;background:#FAFAFA}
@@ -555,18 +556,14 @@ table.cmp .orange{color:var(--orange);font-weight:800}
 .contact-section{padding:120px 0;background:var(--black);color:#fff}
 .contact-section .section-sub{color:#9AA1A6}
 
-/* 홈 화면 .contact-wrap(margin-top:30px)과 다른 부분만 범위를 좁혀 재정의 */
+/* 홈 화면 과 다른 부분만 범위를 좁혀 재정의 */
 .contact-section .contact-wrap{margin-top:36px}
-
-/* 홈 화면 .info-row .val에 line-height만 추가된 부분 */
 .contact-section .info-row .val{line-height:1.65}
 .contact-section .info-row .val a{border-bottom:1px solid rgba(255,255,255,.3)}
 .contact-section .info-row .val a:hover{color:var(--orange);border-color:var(--orange)}
 .contact-section .info-row .val small{display:block;font-size:13px;color:#9AA1A6;font-weight:500;margin-top:2px}
 
 .faq-section{padding:120px 0;background:#fff}
-/* .faq-list, .faq-item, .faq-a 등은 class.jsp 작업 때 이미 추가되어 있어 중복 생략.
-   font-size만 18px→17px로 다르므로 이 부분만 범위를 좁혀 재정의 */
 .faq-section .faq-q{font-size:17px}
 
 @media (max-width: 880px){
@@ -638,8 +635,14 @@ table.cmp .orange{color:var(--orange);font-weight:800}
 .ncard p{font-size:14px;color:var(--gray-600);line-height:1.6;margin-bottom:14px}
 .nmeta{font-size:12.5px;color:var(--gray-400);font-weight:700}
 
-/* 공지사항 목록(.pagination)과 다른 부분만 범위를 좁혀 재정의 */
+/* 공지사항 목록과 다른 부분만 범위를 좁혀 재정의 */
 .news-section .pagination{margin-top:60px}
 .news-section .pagination button{width:42px;height:42px}
 
 @media (max-width: 880px){.grid{grid-template-columns:1fr}}
+
+/* ===== NEWS DETAIL PAGE ===== */
+.post-image{margin:36px 0 28px;border-radius:8px;overflow:hidden;aspect-ratio:16/9;background:linear-gradient(135deg,#1B252B,var(--black));display:flex;align-items:center;justify-content:center}
+.post-image img{width:30%;opacity:.5}
+.news-post .post-body{padding:0 0 48px}
+.news-post .post-nav .row a{color:var(--gray-600);transition:color .15s ease}

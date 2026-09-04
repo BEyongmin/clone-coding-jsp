@@ -45,4 +45,9 @@ public class HomeController {
     public String news() {
         return "news";
     }
+
+    @GetMapping("/news-detail")
+    public String newsDetail() {
+        return "news-detail";
+    }
 }
