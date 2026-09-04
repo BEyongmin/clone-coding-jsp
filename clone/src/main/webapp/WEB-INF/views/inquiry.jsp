@@ -57,37 +57,40 @@
       </div>
 
       <div class="cform-wrap">
-        <form onsubmit="event.preventDefault(); alert('문의가 접수되었습니다. 빠르게 회신드릴게요!'); this.reset();">
-          <div class="field-row">
-            <div class="field">
-              <label>이름</label>
-              <input type="text" required placeholder="홍길동" />
-            </div>
-            <div class="field">
-              <label>연락처 / 이메일</label>
-              <input type="text" required placeholder="010-0000-0000" />
-            </div>
+      <c:if test="${submitted}">
+        <p style="color:var(--orange);font-weight:700;margin-bottom:16px">문의가 접수되었습니다. 빠르게 회신드릴게요!</p>
+      </c:if>
+      <form method="post" action="${pageContext.request.contextPath}/inquiries">
+        <div class="field-row">
+          <div class="field">
+            <label>이름</label>
+            <input type="text" name="name" required placeholder="홍길동" />
           </div>
           <div class="field">
-            <label>문의 유형</label>
-            <select required>
-              <option value="">선택해주세요</option>
-              <option>협력</option>
-              <option>단체 수업 요청</option>
-              <option>질문</option>
-              <option>기타</option>
-            </select>
+            <label>연락처 / 이메일</label>
+            <input type="text" name="contact" required placeholder="010-0000-0000" />
           </div>
-          <div class="field">
-            <label>희망 인원 / 일정 (선택)</label>
-            <input type="text" placeholder="예) 30명 · 4월 첫 주 · 강남 근처" />
-          </div>
-          <div class="field">
-            <label>문의 내용</label>
-            <textarea required placeholder="요청 사항을 자유롭게 적어주세요."></textarea>
-          </div>
-          <button type="submit">문의 보내기</button>
-        </form>
+        </div>
+        <div class="field">
+          <label>문의 유형</label>
+          <select name="type" required>
+            <option value="">선택해주세요</option>
+            <option>협력</option>
+            <option>단체 수업 요청</option>
+            <option>질문</option>
+            <option>기타</option>
+          </select>
+        </div>
+        <div class="field">
+          <label>희망 인원 / 일정 (선택)</label>
+          <input type="text" name="schedule" placeholder="예) 30명 · 4월 첫 주 · 강남 근처" />
+        </div>
+        <div class="field">
+          <label>문의 내용</label>
+          <textarea name="message" required placeholder="요청 사항을 자유롭게 적어주세요."></textarea>
+        </div>
+        <button type="submit">문의 보내기</button>
+      </form>
       </div>
     </div>
   </div>

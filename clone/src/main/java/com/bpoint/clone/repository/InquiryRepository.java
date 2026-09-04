@@ -1,5 +1,8 @@
 package com.bpoint.clone.repository;
 
-public class InquiryRepository {
-    
+import org.springframework.data.jpa.repository.JpaRepository;
+
+import com.bpoint.clone.entity.Inquiry;
+
+public interface InquiryRepository extends JpaRepository<Inquiry, Long> {
 }

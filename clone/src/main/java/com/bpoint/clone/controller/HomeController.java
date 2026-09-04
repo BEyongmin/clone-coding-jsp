@@ -31,10 +31,10 @@ public class HomeController {
         return "class";
     }
 
-    @GetMapping("/contact")
-    public String contact() {
-        return "contact";
-    }
+    // @GetMapping("/contact")
+    // public String contact() {
+    //     return "contact";
+    // }
 
     @GetMapping("/event")
     public String event() {
