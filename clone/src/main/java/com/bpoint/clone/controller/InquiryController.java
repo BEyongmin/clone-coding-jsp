@@ -15,7 +15,7 @@ import lombok.RequiredArgsConstructor;
 @RequiredArgsConstructor
 public class InquiryController {
     
-        private final InquiryService InquiryService;
+    private final InquiryService inquiryService;
 
     @GetMapping("/contact")
     public String contactPage() {
@@ -24,7 +24,7 @@ public class InquiryController {
 
     @PostMapping("/inquiries")
     public String submit(@ModelAttribute Inquiry inquiry, RedirectAttributes redirectAttributes) {
-        InquiryService.save(inquiry);
+        inquiryService.save(inquiry);
         redirectAttributes.addFlashAttribute("submitted", true);
         return "redirect:/contact";
     }
