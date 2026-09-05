@@ -1,11 +1,14 @@
 package com.bpoint.clone.service;
 
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.Comparator;
 import java.util.List;
 import java.util.stream.Collectors;
 
 import org.springframework.stereotype.Service;
 
+import com.bpoint.clone.dto.NoticeAdminRequest;
 import com.bpoint.clone.entity.Notice;
 import com.bpoint.clone.repository.NoticeRepository;
 
@@ -57,5 +60,45 @@ public class NoticeService {
 
     public Notice getNextNotice(Long id) {
         return noticeRepository.findFirstByIdGreaterThanOrderByIdAsc(id).orElse(null);
+    }
+
+    // 관리자용
+
+    public List<Notice> getAllForAdmin() {
+        return noticeRepository.findAllByOrderByPostDateDesc();
+    }
+
+    public Notice create(NoticeAdminRequest req) {
+        Notice notice = new Notice();
+        applyRequest(notice, req);
+        notice.setViewCount(0);
+        notice.setCreatedAt(LocalDateTime.now());
+        return noticeRepository.save(notice);
+    }
+
+    public Notice update(Long id, NoticeAdminRequest req) {
+        Notice notice = getNoticeById(id);
+        applyRequest(notice, req);
+        return noticeRepository.save(notice);
+    }
+
+    public void delete(Long id) {
+        noticeRepository.deleteById(id);
+    }
+
+    private void applyRequest(Notice notice, NoticeAdminRequest req) {
+        notice.setType(req.getType());
+        notice.setTitle(req.getTitle());
+        notice.setContent(req.getContent());
+        notice.setFileName(req.getFileName());
+        notice.setFileSize(req.getFileSize());
+        notice.setPostDate(parseDate(req.getDate()));
+    }
+
+    private LocalDate parseDate(String date) {
+        if (date == null || date.isBlank()) {
+            return LocalDate.now();
+        }
+        return LocalDate.parse(date);
     }
 }
