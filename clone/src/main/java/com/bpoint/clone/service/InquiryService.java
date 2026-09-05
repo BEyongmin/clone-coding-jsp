@@ -31,4 +31,26 @@ public class InquiryService {
                 .limit(limit)
                 .toList();
     }
+
+    // 관리자용
+    public List<Inquiry> getAllForAdmin() {
+        return inquiryRepository.findAllByOrderByCreatedAtDesc();
+    }
+
+    public Inquiry getById(Long id) {
+        return inquiryRepository.findById(id)
+                .orElseThrow(() -> new IllegalArgumentException("존재하지 않는 문의입니다. id=" + id));
+    }
+
+    public void delete(Long id) {
+        inquiryRepository.deleteById(id);
+    }
+
+    public Inquiry reply(Long id, String replyContent) {
+    Inquiry inquiry = getById(id);
+    inquiry.setReply(replyContent);
+    inquiry.setRepliedAt(LocalDateTime.now());
+    inquiry.setStatus("done");
+    return inquiryRepository.save(inquiry);
+}
 }

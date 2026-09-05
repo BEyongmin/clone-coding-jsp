@@ -36,6 +36,15 @@ public class Inquiry {
         @Column(columnDefinition = "TEXT", nullable = false)
         private String message;
 
+        @Column(nullable = false)
+        private String status = "pending";
+
+        @Column(columnDefinition = "TEXT")
+        private String reply;
+
+        @Column(name = "replied_at")
+        private LocalDateTime repliedAt;
+
         @Column(name = "created_at")
         private LocalDateTime createdAt;
 }
