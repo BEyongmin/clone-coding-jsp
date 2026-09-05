@@ -47,9 +47,14 @@
         <div class="fld"><label>제목 *</label><input type="text" id="f-title" required placeholder="제목을 입력하세요" /></div>
         <div class="fld"><label>날짜</label><input type="date" id="f-date" /></div>
         <div class="fld"><label>본문</label><textarea id="f-content" placeholder="본문 내용 또는 자료에 대한 설명을 입력하세요."></textarea></div>
-        <div class="fld-row">
-          <div class="fld"><label>첨부 파일명 (자료용, 선택)</label><input type="text" id="f-fileName" placeholder="예: bpoint-guide-v1.pdf" /></div>
-          <div class="fld"><label>파일 크기 (선택)</label><input type="text" id="f-fileSize" placeholder="예: 12.4 MB" /></div>
+        <div class="fld">
+          <label>첨부 파일 (자료용, 선택)</label>
+          <input type="file" id="f-file" />
+          <p id="currentFileInfo" style="font-size:12px;color:var(--muted);margin-top:6px"></p>
+          <label id="removeFileWrap" style="display:none;align-items:center;gap:8px;margin-top:8px;cursor:pointer;text-transform:none;letter-spacing:0;font-size:13px;color:var(--red)">
+            <input type="checkbox" id="f-removeFile" style="width:auto;margin:0;cursor:pointer" />
+            기존 첨부파일 제거
+          </label>
         </div>
       </form>
     </div>
@@ -108,8 +113,19 @@
     document.getElementById('f-title').value = item?.title || '';
     document.getElementById('f-date').value = item?.postDate || new Date().toISOString().slice(0, 10);
     document.getElementById('f-content').value = item?.content || '';
-    document.getElementById('f-fileName').value = item?.fileName || '';
-    document.getElementById('f-fileSize').value = item?.fileSize || '';
+    document.getElementById('f-file').value = '';
+    document.getElementById('f-removeFile').checked = false;
+
+    const fileInfo = document.getElementById('currentFileInfo');
+    const removeWrap = document.getElementById('removeFileWrap');
+    if (item?.fileName) {
+      fileInfo.textContent = `현재 파일: \${item.fileName} (\${item.fileSize || ''})`;
+      removeWrap.style.display = 'flex';
+    } else {
+      fileInfo.textContent = '';
+      removeWrap.style.display = 'none';
+    }
+
     document.getElementById('delBtn').style.display = item ? 'inline-flex' : 'none';
     document.getElementById('modal').classList.add('open');
   }
@@ -125,17 +141,26 @@
 
   async function save() {
     const id = document.getElementById('f-id').value;
-    const data = {
-      type: document.getElementById('f-type').value,
-      title: document.getElementById('f-title').value.trim(),
-      date: document.getElementById('f-date').value,
-      content: document.getElementById('f-content').value.trim(),
-      fileName: document.getElementById('f-fileName').value.trim() || null,
-      fileSize: document.getElementById('f-fileSize').value.trim() || null
-    };
-    if (!data.title) {
+    const title = document.getElementById('f-title').value.trim();
+    if (!title) {
       alert('제목을 입력하세요.');
       return;
+    }
+
+    const data = {
+      type: document.getElementById('f-type').value,
+      title: title,
+      date: document.getElementById('f-date').value,
+      content: document.getElementById('f-content').value.trim(),
+      removeFile: document.getElementById('f-removeFile').checked
+    };
+
+    const formData = new FormData();
+    formData.append('data', new Blob([JSON.stringify(data)], { type: 'application/json' }));
+
+    const fileInput = document.getElementById('f-file');
+    if (fileInput.files.length > 0) {
+      formData.append('file', fileInput.files[0]);
     }
 
     const url = id ? `\${API}/\${id}` : API;
@@ -143,8 +168,7 @@
 
     const res = await fetch(url, {
       method: method,
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(data)
+      body: formData
     });
 
     if (!res.ok) {

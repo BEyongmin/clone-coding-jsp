@@ -10,7 +10,9 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestPart;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.server.ResponseStatusException;
 
 import com.bpoint.clone.dto.NoticeAdminRequest;
@@ -28,6 +30,7 @@ public class AdminNoticeController {
 
     private static final String SESSION_KEY = "adminLoggedIn";
 
+    
     @GetMapping("/admin/notices")
     public String page(HttpSession session) {
         if (!isAuthorized(session)) {
@@ -45,15 +48,23 @@ public class AdminNoticeController {
 
     @PostMapping("/admin/notices/api")
     @ResponseBody
-    public Notice create(@RequestBody NoticeAdminRequest request, HttpSession session) {
+    public Notice create(@RequestPart("data") NoticeAdminRequest request,
+                        @RequestPart(value = "file", required = false) MultipartFile file,
+                        HttpSession session) {
         checkAuthorized(session);
+        applyFile(request, file);
         return noticeService.create(request);
     }
 
+
     @PutMapping("/admin/notices/api/{id}")
     @ResponseBody
-    public Notice update(@PathVariable("id") Long id, @RequestBody NoticeAdminRequest request, HttpSession session) {
+    public Notice update(@PathVariable("id") Long id,
+                        @RequestPart("data") NoticeAdminRequest request,
+                        @RequestPart(value = "file", required = false) MultipartFile file,
+                        HttpSession session) {
         checkAuthorized(session);
+        applyFile(request, file);
         return noticeService.update(id, request);
     }
 
@@ -62,6 +73,14 @@ public class AdminNoticeController {
     public void delete(@PathVariable("id") Long id, HttpSession session) {
         checkAuthorized(session);
         noticeService.delete(id);
+    }
+
+    private void applyFile(NoticeAdminRequest request, MultipartFile file) {
+    if (file != null && !file.isEmpty()) {
+        String savedFileName = noticeService.saveFile(file);
+        request.setFileName(savedFileName);
+        request.setFileSize(noticeService.formatFileSize(file.getSize()));
+    }
     }
 
     private boolean isAuthorized(HttpSession session) {

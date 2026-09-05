@@ -13,5 +13,5 @@ public class NoticeAdminRequest {
     private String content;
     private String fileName;
     private String fileSize;
-    
+    private Boolean removeFile;
 }
