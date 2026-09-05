@@ -17,7 +17,7 @@ import lombok.Setter;
 @Getter
 @Setter
 public class News {
-    
+        
         @Id
         @GeneratedValue(strategy = GenerationType.IDENTITY)
         private Long id;
@@ -33,6 +33,15 @@ public class News {
 
         @Column(columnDefinition = "TEXT")
         private String content; // 상세 페이지 본문
+
+        @Column
+        private String author;
+
+        @Column
+        private String image;
+
+        @Column(name = "show_in_event")
+        private Boolean showInEvent;
 
         @Column(name = "post_date")
         private LocalDate postDate;
