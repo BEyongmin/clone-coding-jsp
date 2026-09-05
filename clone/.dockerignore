@@ -1,0 +1,9 @@
+.git
+.gradle
+.vscode
+.idea
+build/classes
+build/resources
+build/tmp
+src
+*.md
