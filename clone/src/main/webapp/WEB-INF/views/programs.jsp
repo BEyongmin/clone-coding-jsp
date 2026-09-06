@@ -26,13 +26,13 @@
 
 <section class="programs-section">
   <div class="container">
-    <div class="intro">
+    <div class="intro reveal">
       <span class="eyebrow">TWO TRACKS</span>
       <h2 class="section-title">두 가지 트랙,<br><span class="o">하나의</span> 철학.</h2>
       <p>매주의 클래스(Class)는 '나를 마주하는 시간', 분기별 이벤트(Event)는 '함께 모이는 축제'입니다.</p>
     </div>
     <div class="program-grid">
-      <div class="program class">
+      <div class="program class reveal">
         <div>
           <span class="program-tag">CLASS</span>
           <h3>나를 마주하고,<br>어제보다 단단해지는 시간.</h3>
@@ -45,7 +45,7 @@
         </div>
         <a class="btn btn-primary" href="${pageContext.request.contextPath}/class" style="width:fit-content">Class 자세히 →</a>
       </div>
-      <div class="program event">
+      <div class="program event reveal">
         <div>
           <span class="program-tag" style="background:rgba(0,0,0,.18);color:#fff">EVENT</span>
           <h3>성취를 공유하고,<br>즐거움으로 하나 되는 축제.</h3>

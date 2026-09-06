@@ -32,3 +32,5 @@
     <span>Designed with discipline, built for growth.</span>
   </div>
 </footer>
+
+<script src="${pageContext.request.contextPath}/common.js"></script>

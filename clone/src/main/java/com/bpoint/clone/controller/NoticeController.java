@@ -23,9 +23,9 @@ public class NoticeController {
 
     @GetMapping
     public String getAllNotices(
-            @RequestParam(defaultValue = "all") String type,
-            @RequestParam(defaultValue = "") String keyword,
-            @RequestParam(defaultValue = "new") String sort,
+            @RequestParam(value = "type", defaultValue = "all") String type,
+            @RequestParam(value = "keyword", defaultValue = "") String keyword,
+            @RequestParam(value = "sort", defaultValue = "new") String sort,
             Model model) {
 
         List<Notice> notices = noticeService.searchNotices(type, keyword, sort);
@@ -50,28 +50,4 @@ public class NoticeController {
         return "notice/detail";
     }
 
-    //  @GetMapping("/download/{id}")
-    // @ResponseBody
-    // public ResponseEntity<Resource> download(@PathVariable Long id) throws IOException {
-    //     Notice notice = noticeService.getNoticeById(id);
-    //     String fileName = notice.getFileName();
-
-    //     if (fileName == null || fileName.isBlank()) {
-    //         return ResponseEntity.notFound().build();
-    //     }
-
-    //     Resource resource = new ClassPathResource("static/uploads/" + fileName);
-    //     if (!resource.exists()) {
-    //         return ResponseEntity.notFound().build();
-    //     }
-
-    //     String encodedFileName = URLEncoder.encode(fileName, StandardCharsets.UTF_8)
-    //             .replace("+", "%20");
-
-    //     return ResponseEntity.ok()
-    //             .header(HttpHeaders.CONTENT_DISPOSITION,
-    //                     "attachment; filename*=UTF-8''" + encodedFileName)
-    //             .contentType(MediaType.APPLICATION_OCTET_STREAM)
-    //             .body(resource);
-    // }
 }

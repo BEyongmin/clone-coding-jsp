@@ -35,10 +35,10 @@
     <h2 class="section-title">한 클래스, <span class="o">4단계</span>의 흐름.</h2>
     <p class="section-sub">매 클래스는 같은 4단계 흐름으로 진행됩니다.</p>
     <div class="curri-grid">
-      <div class="step"><div class="num">STEP 01</div><h4>호흡 · 워밍업</h4><p>사격 선수의 호흡법을 적용한 워밍업으로 시작.</p></div>
-      <div class="step"><div class="num">STEP 02</div><h4>기본기 다지기</h4><p>드리블·슛·패스의 핵심 기본기를 자세 교정 위주로.</p></div>
-      <div class="step"><div class="num">STEP 03</div><h4>몰입 훈련</h4><p>실패 상황 직후의 회복탄력성, 압박 상황에서의 평정심.</p></div>
-      <div class="step"><div class="num">STEP 04</div><h4>피드백 · 기록</h4><p>점수가 아닌 '오늘 발견한 작은 도약'을 함께 기록.</p></div>
+      <div class="step reveal"><div class="num">STEP 01</div><h4>호흡 · 워밍업</h4><p>사격 선수의 호흡법을 적용한 워밍업으로 시작.</p></div>
+      <div class="step reveal"><div class="num">STEP 02</div><h4>기본기 다지기</h4><p>드리블·슛·패스의 핵심 기본기를 자세 교정 위주로.</p></div>
+      <div class="step reveal"><div class="num">STEP 03</div><h4>몰입 훈련</h4><p>실패 상황 직후의 회복탄력성, 압박 상황에서의 평정심.</p></div>
+      <div class="step reveal"><div class="num">STEP 04</div><h4>피드백 · 기록</h4><p>점수가 아닌 '오늘 발견한 작은 도약'을 함께 기록.</p></div>
     </div>
   </div>
 </section>
@@ -48,10 +48,10 @@
     <span class="eyebrow">FORMATS</span>
     <h2 class="section-title">상황에 맞는<br><span class="o">두 가지 형태.</span></h2>
     <div class="formats-grid">
-      <div class="fmt"><span class="tag">PERSONAL</span><h3>개인 클래스</h3><p class="sub">코치와 1:1 또는 1:2로 진행하는 집중 클래스.</p>
+      <div class="fmt reveal"><span class="tag">PERSONAL</span><h3>개인 클래스</h3><p class="sub">코치와 1:1 또는 1:2로 진행하는 집중 클래스.</p>
         <ul><li>회당 60~75분</li><li>코치 1명 + 수강생 1~2명</li><li>맞춤 커리큘럼 · 영상 피드백</li><li>주 1회 권장 / 4주 단위 신청</li></ul>
       </div>
-      <div class="fmt"><span class="tag">GROUP</span><h3>그룹 클래스</h3><p class="sub">3~6명이 함께 하는 소그룹 클래스.</p>
+      <div class="fmt reveal"><span class="tag">GROUP</span><h3>그룹 클래스</h3><p class="sub">3~6명이 함께 하는 소그룹 클래스.</p>
         <ul><li>회당 90분</li><li>코치 1~2명 + 수강생 3~6명</li><li>주제별 모듈 · 미니 게임 포함</li><li>주 1회 / 8주 시즌제 운영</li></ul>
       </div>
     </div>
@@ -64,15 +64,15 @@
     <h2 class="section-title" style="color:#fff">합리적인 <span class="o">시즌 패키지.</span></h2>
     <p class="section-sub">정확한 가격은 스마트스토어에서 확인 가능합니다.</p>
     <div class="pricing-grid">
-      <div class="plan"><div class="ptag">TRIAL</div><h3>1회 체험</h3><div class="price">상담 가능 <small>/ 1회</small></div>
+      <div class="plan reveal"><div class="ptag">TRIAL</div><h3>1회 체험</h3><div class="price">상담 가능 <small>/ 1회</small></div>
         <ul><li>개인 클래스 1회</li><li>맞춤 피드백 리포트</li><li>현 수준 진단 포함</li></ul>
         <a class="btn btn-primary" href="https://smartstore.naver.com" target="_blank" rel="noopener">체험 신청 →</a>
       </div>
-      <div class="plan featured"><div class="ptag">★ 추천</div><h3>월 정기 (4회)</h3><div class="price">상담 가능 <small>/ 4회 · 1개월</small></div>
+      <div class="plan featured reveal"><div class="ptag">★ 추천</div><h3>월 정기 (4회)</h3><div class="price">상담 가능 <small>/ 4회 · 1개월</small></div>
         <ul><li>주 1회 정기 클래스</li><li>월 1회 멘탈 코칭 세션</li><li>매주 영상 피드백</li><li>전용 성장 로그 제공</li></ul>
         <a class="btn btn-dark" href="https://smartstore.naver.com" target="_blank" rel="noopener">정기권 신청 →</a>
       </div>
-      <div class="plan"><div class="ptag">SEASON</div><h3>시즌 패키지 (8주)</h3><div class="price">상담 가능 <small>/ 8회 · 2개월</small></div>
+      <div class="plan reveal"><div class="ptag">SEASON</div><h3>시즌 패키지 (8주)</h3><div class="price">상담 가능 <small>/ 8회 · 2개월</small></div>
         <ul><li>그룹 클래스 8회</li><li>시즌 종료 리뷰 세션</li><li>커뮤니티 이벤트 우선 참여</li></ul>
         <a class="btn btn-primary" href="https://smartstore.naver.com" target="_blank" rel="noopener">시즌제 신청 →</a>
       </div>

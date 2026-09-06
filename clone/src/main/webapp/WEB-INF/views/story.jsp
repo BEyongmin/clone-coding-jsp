@@ -27,9 +27,9 @@
 
 <section class="story-body">
   <div class="container">
-    <div class="story-quote-big">"스포츠가 단순한 승패의 결과물이 아닌, 자신의 무의식을 비추고 어제보다 나은 나를 발견하는 <span class="o">정직한 성장의 거울</span>이 되기를."</div>
+    <div class="story-quote-big reveal">"스포츠가 단순한 승패의 결과물이 아닌, 자신의 무의식을 비추고 어제보다 나은 나를 발견하는 <span class="o">정직한 성장의 거울</span>이 되기를."</div>
 
-    <div class="story-chapter">
+    <div class="story-chapter reveal">
       <div class="chap-tag">CHAPTER 01 — 0.1MM</div>
       <h2>0.1mm의 오차로 갈리던 <span class="o">승부의 세계</span>에서.</h2>
       <p>22살까지 엘리트 사격 선수로 사선(射線)에 서며, <strong>0.1mm의 오차로 승패가 갈리는 냉혹한 승부의 세계</strong>를 온몸으로 겪었습니다. 단 한 번의 격발에 수년간의 노력이 결정되는 압박감. 그 안에서 마주한 진실은 명확했습니다.</p>
@@ -37,7 +37,7 @@
       <p>그래서 저는 사격을 "정직한 거울 앞에 서는 일"이라고 부릅니다. 거기엔 핑계가 없고, 다른 누구의 탓도 없고, 오직 그 순간의 내 마음만이 있습니다.</p>
     </div>
 
-    <div class="story-chapter">
+    <div class="story-chapter reveal">
       <div class="chap-tag">CHAPTER 02 — 전환</div>
       <h2>현장에서 만난 <span class="o">또 다른 가능성.</span></h2>
       <p>선수 생활을 마친 후 생활체육의 현장에서 사람들을 가르치며 한 가지 소망이 생겼습니다.</p>
@@ -45,7 +45,7 @@
       <p>생활체육 코트에는 모두가 있었습니다. 첫 슛을 던지는 아이, 30년 만에 운동을 시작한 직장인, 무릎이 아파도 매주 오는 어르신. 이들에게 필요한 것은 '이기는 법'이 아니었습니다. <strong>'다시 일어서는 법'</strong>이었습니다.</p>
     </div>
 
-    <div class="story-chapter">
+    <div class="story-chapter reveal">
       <div class="chap-tag">CHAPTER 03 — B.POINT</div>
       <h2>이제, <span class="o">B.POINT</span>를 시작합니다.</h2>
       <p>사격 선수 시절의 정교한 감각과 수많은 지도 경험을 결합하여, 타인과의 경쟁이 아닌 <strong>오직 자신의 성장에만 몰입할 수 있는 특별한 스포츠 경험</strong>을 열어갑니다.</p>

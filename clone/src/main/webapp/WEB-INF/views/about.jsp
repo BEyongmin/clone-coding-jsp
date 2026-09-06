@@ -27,7 +27,7 @@
 <section class="overview">
   <div class="container">
     <div class="overview-grid">
-      <div class="left">
+      <div class="left reveal">
         <div>
           <span class="eyebrow">OVERVIEW</span>
           <h2>우리가 만드는<br><span class="o">스포츠 문화.</span></h2>
@@ -36,7 +36,7 @@
           <img src="https://images.unsplash.com/photo-1574623452334-1e0ac2b3ccb4?w=900&q=80&auto=format&fit=crop" alt="농구 코트의 풍경" loading="lazy" />
         </div>
       </div>
-      <div class="right">
+      <div class="right reveal">
         <p>스포츠의 진정한 가치는 스코어보드 너머에 있습니다. 우리는 당신이 흘린 땀방울 속에 숨겨진 미세한 변화에 집중하여, 결과에 매몰되지 않고 과정 속에서 스스로의 성장을 느끼는 새로운 스포츠 문화를 만들어 갑니다.</p>
         <p>엘리트 사격 선수 출신의 정밀한 감각과 현장에서 축적된 지도 경험을 결합해, 단순한 기술 전수가 아닌 '마음을 다스리는 기술'까지 함께 가르치는 것이 B.POINT의 차별점입니다.</p>
         <p>우리의 클래스에 참여하는 모든 사람은 '오늘의 나'를 어제와 비교합니다. 타인과의 경쟁이 아닌, 자기 자신과의 성장이 곧 가장 큰 성취가 되는 시간을 함께 만듭니다.</p>
@@ -47,7 +47,7 @@
 
 <section class="vision-section">
   <div class="container">
-    <div class="vision-head">
+    <div class="vision-head reveal">
       <div>
         <span class="eyebrow">OUR VISION</span>
         <h2 class="section-title">우리가 추구하는<br><span class="o">세 가지 원칙.</span></h2>
@@ -58,19 +58,19 @@
       </div>
     </div>
     <div class="vision-grid">
-      <div class="vision-card">
+      <div class="vision-card reveal">
         <div class="vision-num">01</div>
         <h3>회복탄력성</h3>
         <div class="veng">RESILIENCE</div>
         <p>실패나 실책 직후의 압박감 속에서도 다시 평정심을 찾고, 최적의 몰입 상태로 돌아가는 멘탈의 힘을 길러줍니다.</p>
       </div>
-      <div class="vision-card">
+      <div class="vision-card reveal">
         <div class="vision-num">02</div>
         <h3>성장 중심</h3>
         <div class="veng">GROWTH-ORIENTED</div>
         <p>승패나 기록 같은 단편적인 결과보다, 그 과정에서 개인이 체득하는 작은 성취와 지속적인 도약을 가장 가치 있게 여깁니다.</p>
       </div>
-      <div class="vision-card">
+      <div class="vision-card reveal">
         <div class="vision-num">03</div>
         <h3>혁신적 경험</h3>
         <div class="veng">INNOVATIVE EXPERIENCE</div>
