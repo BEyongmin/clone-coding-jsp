@@ -18,7 +18,9 @@ public class HomeController {
     private final NewsService newsService;
 
     @GetMapping("/")
-    public String home() {
+    public String home(Model model) {
+        List<News> recentNews = newsService.getAllNews().stream().limit(3).toList();
+        model.addAttribute("recentNews", recentNews);
         return "index";
     }
 

@@ -1,4 +1,6 @@
 <%@ page contentType="text/html; charset=UTF-8" %>
+<%@ taglib prefix="c" uri="jakarta.tags.core" %>
+<%@ taglib prefix="fn" uri="jakarta.tags.functions" %>
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -124,33 +126,21 @@
     <h2 class="section-title">B.POINT의 <span class="o">움직임.</span></h2>
     <p class="section-sub">클래스 현장, 이벤트 후기, 그리고 우리가 만들어가는 변화의 기록들.</p>
     <div class="news-grid">
-      <article class="news-card" onclick="location.href='${pageContext.request.contextPath}/news'" style="cursor:pointer">
-        <div class="news-thumb t1"><img src="${pageContext.request.contextPath}/assets/images/헤더 로고.png" alt="" class="news-mark" /></div>
-        <div class="news-body">
-          <span class="news-tag">CLASS</span>
-          <h4>첫 클래스를 마치며 — 작은 떨림이 만든 큰 변화</h4>
-          <p>슈팅 자세보다 호흡과 시선을 먼저 가르친 첫 주차. 수강생들의 미세한 변화를 기록했습니다.</p>
-          <div class="news-meta">2026.05.08</div>
-        </div>
-      </article>
-      <article class="news-card">
-        <div class="news-thumb t2"><img src="${pageContext.request.contextPath}/assets/images/헤더 로고.png" alt="" class="news-mark" /></div>
-        <div class="news-body">
-          <span class="news-tag">EVENT</span>
-          <h4>모두가 주인공이 되는 농구 이벤트 'POINT DAY' 개최</h4>
-          <p>승패가 아닌 '오늘의 나의 성장'을 기록하는 새로운 형식의 농구 페스티벌.</p>
-          <div class="news-meta">2026.04.22</div>
-        </div>
-      </article>
-      <article class="news-card">
-        <div class="news-thumb t3"><img src="${pageContext.request.contextPath}/assets/images/헤더 로고.png" alt="" class="news-mark" /></div>
-        <div class="news-body">
-          <span class="news-tag">STORY</span>
-          <h4>왜 사격 출신 코치가 농구를 가르치는가</h4>
-          <p>0.1mm의 오차와 골밑의 1초 — 두 종목이 만나는 '평정심'이라는 공통어.</p>
-          <div class="news-meta">2026.04.05</div>
-        </div>
-      </article>
+      <c:set var="colors" value="${fn:split('t1,t2,t3', ',')}" />
+      <c:forEach var="news" items="${recentNews}" varStatus="status">
+        <article class="news-card" onclick="location.href='${pageContext.request.contextPath}/news-detail/${news.id}'" style="cursor:pointer">
+          <div class="news-thumb ${colors[status.index % 3]}"><img src="${pageContext.request.contextPath}/assets/images/헤더 로고.png" alt="" class="news-mark" /></div>
+          <div class="news-body">
+            <span class="news-tag">${fn:toUpperCase(news.category)}</span>
+            <h4>${news.title}</h4>
+            <p>${news.excerpt}</p>
+            <div class="news-meta">${news.postDate}</div>
+          </div>
+        </article>
+      </c:forEach>
+      <c:if test="${empty recentNews}">
+        <p style="color:var(--gray-400)">등록된 소식이 아직 없습니다.</p>
+      </c:if>
     </div>
     <div style="margin-top:48px;text-align:center"><a class="btn btn-line" href="${pageContext.request.contextPath}/news">전체 소식 보기 →</a></div>
   </div>
