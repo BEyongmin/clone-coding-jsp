@@ -83,4 +83,8 @@ public class NewsService {
         }
         return LocalDate.parse(date);
     }
+
+    public List<News> getEventCases() {
+        return newsRepository.findByShowInEventTrueOrderByPostDateDesc();
+    }
 }

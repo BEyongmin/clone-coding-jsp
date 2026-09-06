@@ -1,10 +1,21 @@
 package com.bpoint.clone.controller;
 
+import java.util.List;
+
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
+import com.bpoint.clone.entity.News;
+import com.bpoint.clone.service.NewsService;
+
+import lombok.RequiredArgsConstructor;
+
 @Controller
+@RequiredArgsConstructor 
 public class HomeController {
+
+    private final NewsService newsService;
 
     @GetMapping("/")
     public String home() {
@@ -31,23 +42,10 @@ public class HomeController {
         return "class";
     }
 
-    // @GetMapping("/contact")
-    // public String contact() {
-    //     return "contact";
-    // }
-
     @GetMapping("/event")
-    public String event() {
+    public String event(Model model) {
+        List<News> cases = newsService.getEventCases();
+        model.addAttribute("cases", cases);
         return "event";
     }
-
-    // @GetMapping("/news")
-    // public String news() {
-    //     return "news";
-    // }
-
-    // @GetMapping("/news-detail")
-    // public String newsDetail() {
-    //     return "news-detail";
-    // }
 }

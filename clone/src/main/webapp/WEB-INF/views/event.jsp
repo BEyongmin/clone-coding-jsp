@@ -1,4 +1,6 @@
 <%@ page contentType="text/html; charset=UTF-8" %>
+<%@ taglib prefix="c" uri="jakarta.tags.core" %>
+<%@ taglib prefix="fn" uri="jakarta.tags.functions" %>
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -62,12 +64,18 @@
     <h2 class="section-title" style="color:#fff">함께한 <span class="o">사례들.</span></h2>
     <p class="section-sub">B.POINT가 진행한 이벤트의 일부 사례입니다.</p>
     <div class="case-grid">
-      <div class="case"><span class="tag">POINT DAY</span><h4>2026 봄 — 첫 POINT DAY 개최</h4><p>실력별 4개 트랙. 참가자 64명, 18명이 모두 주인공이 된 첫 페스티벌.</p><div class="meta">2026.04.22 · 강남 ○○체육관</div></div>
-      <div class="case"><span class="tag">CORPORATE</span><h4>○○스타트업 팀빌딩 이벤트</h4><p>전사 30명 워크숍. 농구 게임 + 회복탄력성 워크숍 + 회고 세션.</p><div class="meta">2026.03.18 · 사내 체육관</div></div>
-      <div class="case"><span class="tag">SCHOOL</span><h4>○○고등학교 자기효능감 클래스</h4><p>3학년 24명. 농구와 결합한 4주 프로그램.</p><div class="meta">2026.02 ~ 2026.03</div></div>
-      <div class="case"><span class="tag">PARTNER</span><h4>○○복지관 시니어 농구 클리닉</h4><p>60대 이상 어르신 12명. '다시 일어선 나'를 박수받는 시간.</p><div class="meta">2026.01.30</div></div>
+      <c:forEach var="news" items="${cases}">
+        <div class="case">
+          <span class="tag">${fn:toUpperCase(news.category)}</span>
+          <h4>${news.title}</h4>
+          <p>${news.excerpt}</p>
+          <div class="meta">${news.postDate}</div>
+        </div>
+      </c:forEach>
+      <c:if test="${empty cases}">
+        <div style="grid-column:1/-1;text-align:center;padding:40px 0;color:#9AA1A6">등록된 사례가 아직 없습니다.</div>
+      </c:if>
     </div>
-  </div>
 </section>
 
 <section class="event-cta">

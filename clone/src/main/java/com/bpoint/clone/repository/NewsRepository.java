@@ -16,4 +16,6 @@ public interface NewsRepository extends JpaRepository<News, Long> {
     Optional<News> findTopByIdLessThanOrderByIdDesc(Long id);
 
     Optional<News> findTopByIdGreaterThanOrderByIdAsc(Long id);
+
+    List<News> findByShowInEventTrueOrderByPostDateDesc();
 }
