@@ -3,8 +3,10 @@ package com.bpoint.clone.controller;
 import java.io.IOException;
 import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
+import java.nio.file.Path;
 
 import org.springframework.core.io.ClassPathResource;
+import org.springframework.core.io.FileSystemResource;
 import org.springframework.core.io.Resource;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.MediaType;
@@ -33,7 +35,8 @@ public class FileDownloadController {
             return ResponseEntity.notFound().build();
         }
 
-        Resource resource = new ClassPathResource("static/uploads/" + fileName);
+        Path filePath = noticeService.getFilePath(fileName);
+        Resource resource = new FileSystemResource(filePath);
         if (!resource.exists()) {
             return ResponseEntity.notFound().build();
         }

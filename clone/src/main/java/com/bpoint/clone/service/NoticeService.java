@@ -11,6 +11,7 @@ import java.util.Comparator;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -25,6 +26,9 @@ import lombok.RequiredArgsConstructor;
 public class NoticeService {
 
     private final NoticeRepository noticeRepository;
+
+        @Value("${app.upload-dir:/app/uploads/}")
+    private String uploadDir;
 
     public List<Notice> getAllNotices() {
         return noticeRepository.findAll();
@@ -69,8 +73,6 @@ public class NoticeService {
     }
 
     // 관리자용
-
-    private static final String UPLOAD_DIR = "src/main/resources/static/uploads/";
 
     public List<Notice> getAllForAdmin() {
         return noticeRepository.findAllByOrderByPostDateDesc();
@@ -122,7 +124,7 @@ public class NoticeService {
         String originalFilename = file.getOriginalFilename();
         String storedFilename = System.currentTimeMillis() + "_" + originalFilename;
         try {
-            Path uploadPath = Paths.get(UPLOAD_DIR);
+            Path uploadPath = Paths.get(uploadDir);
             if (!Files.exists(uploadPath)) {
                 Files.createDirectories(uploadPath);
             }
@@ -132,6 +134,10 @@ public class NoticeService {
             throw new RuntimeException("파일 저장에 실패했습니다.", e);
         }
         return storedFilename;
+    }
+
+    public Path getFilePath(String fileName) {
+    return Paths.get(uploadDir).resolve(fileName);
     }
 
     public String formatFileSize(long bytes) {
@@ -145,7 +151,7 @@ public class NoticeService {
             return;
         }
         try {
-            Path target = Paths.get(UPLOAD_DIR).resolve(fileName);
+            Path target = Paths.get(uploadDir).resolve(fileName);
             Files.deleteIfExists(target);
         } catch (IOException e) {
             // 파일 삭제 실패는 전체 작업을 막을 만큼 치명적이지 않으므로 로그만 남기고 넘어감
