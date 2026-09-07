@@ -1,6 +1,8 @@
 package com.bpoint.clone.entity;
 
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+import java.util.Locale;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -47,4 +49,14 @@ public class Inquiry {
 
         @Column(name = "created_at")
         private LocalDateTime createdAt;
+
+        private static final DateTimeFormatter DATE_PART =
+                DateTimeFormatter.ofPattern("yyyy. MM. dd.", Locale.KOREAN);
+        private static final DateTimeFormatter TIME_PART =
+                DateTimeFormatter.ofPattern("a h:mm", Locale.KOREAN);
+
+        public String getCreatedAtDisplay() {
+        if (createdAt == null) return "";
+        return createdAt.format(DATE_PART) + "<br/>" + createdAt.format(TIME_PART);
+        }
 }

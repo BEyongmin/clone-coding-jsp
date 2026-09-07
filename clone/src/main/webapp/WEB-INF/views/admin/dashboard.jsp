@@ -61,7 +61,7 @@
                     <td style="color:var(--soft);max-width:380px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">
                       ${fn:substring(i.message, 0, fn:length(i.message) > 80 ? 80 : fn:length(i.message))}
                     </td>
-                    <td style="color:var(--muted)">${i.createdAt}</td>
+                    <td style="color:var(--muted)">${i.createdAtDisplay}</td>
                     <td class="actions"><a class="btn btn-line btn-sm" href="${pageContext.request.contextPath}/admin/inquiries?id=${i.id}">보기 →</a></td>
                   </tr>
                 </c:forEach>
