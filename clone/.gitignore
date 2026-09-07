@@ -36,3 +36,7 @@ out/
 ### VS Code ###
 .vscode/
 application.properties
+
+### Uploaded files ###
+src/main/resources/static/uploads/*
+!src/main/resources/static/uploads/.gitkeep
