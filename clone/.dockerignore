@@ -7,3 +7,4 @@ build/resources
 build/tmp
 src
 *.md
+.env
