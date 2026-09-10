@@ -67,6 +67,7 @@ public class NewsService {
     }
 
     private void applyRequest(News news, NewsAdminRequest req) {
+        validateLength(req.getTitle());
         news.setCategory(req.getCategory());
         news.setTitle(req.getTitle());
         news.setExcerpt(req.getExcerpt());
@@ -96,5 +97,11 @@ public class NewsService {
 
     public List<News> getEventCases() {
         return newsRepository.findByShowInEventTrueOrderByPostDateDesc();
+    }
+
+        private void validateLength(String title) {
+        if (title != null && title.length() > 100) {
+            throw new IllegalArgumentException("제목은 최대 100자까지 입력 가능합니다. (현재 " + title.length() + "자)");
+        }
     }
 }

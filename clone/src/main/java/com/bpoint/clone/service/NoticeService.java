@@ -161,6 +161,7 @@ public class NoticeService {
     }
 
     private void applyCommonFields(Notice notice, NoticeAdminRequest req) {
+        validateLength(req.getTitle());
         notice.setType(req.getType());
         notice.setTitle(req.getTitle());
         notice.setContent(req.getContent());
@@ -184,6 +185,11 @@ public class NoticeService {
 
         if (!allowedExtensions.contains(extension)) {
             throw new IllegalArgumentException("허용되지 않는 파일 형식입니다. (jpg, jpeg, png, gif, webp만 가능)");
+        }
+    }
+    private void validateLength(String title) {
+        if (title != null && title.length() > 100) {
+            throw new IllegalArgumentException("제목은 최대 100자까지 입력 가능합니다. (현재 " + title.length() + "자)");
         }
     }
 }
