@@ -24,8 +24,28 @@ public class InquiryController {
 
     @PostMapping("/inquiries")
     public String submit(@ModelAttribute Inquiry inquiry, RedirectAttributes redirectAttributes) {
+        try {
+            validateContact(inquiry.getContact());
+        } catch (IllegalArgumentException e) {
+            redirectAttributes.addFlashAttribute("error", e.getMessage());
+            return "redirect:/contact";
+        }
+
         inquiryService.save(inquiry);
         redirectAttributes.addFlashAttribute("submitted", true);
         return "redirect:/contact";
+    }
+
+    private void validateContact(String contact) {
+        if (contact == null || contact.isBlank()) {
+            throw new IllegalArgumentException("연락처를 입력해주세요.");
+        }
+
+        String phonePattern = "^01[016789]-?\\d{3,4}-?\\d{4}$";
+        String emailPattern = "^[\\w.-]+@[\\w.-]+\\.[a-zA-Z]{2,}$";
+
+        if (!contact.matches(phonePattern) && !contact.matches(emailPattern)) {
+            throw new IllegalArgumentException("연락처는 휴대폰 번호(예: 010-1234-5678) 또는 이메일 형식으로 입력해주세요.");
+        }
     }
 }

@@ -61,6 +61,9 @@
       <c:if test="${submitted}">
         <p style="color:var(--orange);font-weight:700;margin-bottom:16px">문의가 접수되었습니다. 빠르게 회신드릴게요!</p>
       </c:if>
+      <c:if test="${not empty error}">
+        <p style="color:#e74c3c;font-weight:700;margin-bottom:16px">${error}</p>
+      </c:if>
       <form method="post" action="${pageContext.request.contextPath}/inquiries">
         <div class="field-row">
           <div class="field">

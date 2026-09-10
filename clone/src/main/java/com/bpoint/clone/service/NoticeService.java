@@ -122,6 +122,7 @@ public class NoticeService {
             return null;
         }
         String originalFilename = file.getOriginalFilename();
+        validateExtension(originalFilename); 
         String storedFilename = System.currentTimeMillis() + "_" + originalFilename;
         try {
             Path uploadPath = Paths.get(uploadDir);
@@ -171,5 +172,18 @@ public class NoticeService {
             return LocalDate.now();
         }
         return LocalDate.parse(date);
+    }
+
+    private void validateExtension(String filename) {
+        if (filename == null || !filename.contains(".")) {
+            throw new IllegalArgumentException("파일 확장자를 확인할 수 없습니다.");
+        }
+
+        String extension = filename.substring(filename.lastIndexOf(".") + 1).toLowerCase();
+        List<String> allowedExtensions = List.of("jpg", "jpeg", "png", "gif", "webp");
+
+        if (!allowedExtensions.contains(extension)) {
+            throw new IllegalArgumentException("허용되지 않는 파일 형식입니다. (jpg, jpeg, png, gif, webp만 가능)");
+        }
     }
 }

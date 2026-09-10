@@ -172,7 +172,8 @@
     });
 
     if (!res.ok) {
-      alert('저장에 실패했습니다.');
+      const errorMessage = await res.text();
+      alert(errorMessage || '저장에 실패했습니다.');
       return;
     }
 
