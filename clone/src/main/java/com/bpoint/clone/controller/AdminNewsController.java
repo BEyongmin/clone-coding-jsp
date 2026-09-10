@@ -73,4 +73,10 @@ public class AdminNewsController {
             throw new ResponseStatusException(HttpStatus.UNAUTHORIZED, "로그인이 필요합니다.");
         }
     }
+
+    @org.springframework.web.bind.annotation.ExceptionHandler(IllegalArgumentException.class)
+    @ResponseBody
+    public org.springframework.http.ResponseEntity<String> handleValidationError(IllegalArgumentException e) {
+        return org.springframework.http.ResponseEntity.badRequest().body(e.getMessage());
+    }
 }

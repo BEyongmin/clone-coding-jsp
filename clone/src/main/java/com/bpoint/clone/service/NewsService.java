@@ -72,9 +72,19 @@ public class NewsService {
         news.setExcerpt(req.getExcerpt());
         news.setContent(req.getContent());
         news.setAuthor(req.getAuthor() == null || req.getAuthor().isBlank() ? "B.POINT" : req.getAuthor());
-        news.setImage(req.getImage());
+        news.setImage(validateImageUrl(req.getImage()));
         news.setShowInEvent(Boolean.TRUE.equals(req.getShowInEvent()));
         news.setPostDate(parseDate(req.getDate()));
+    }
+
+    private String validateImageUrl(String imageUrl) {
+        if (imageUrl == null || imageUrl.isBlank()) {
+            return null;
+        }
+        if (!imageUrl.matches("^https?://\\S+\\.(jpg|jpeg|png|gif|webp)(\\?.*)?$")) {
+            throw new IllegalArgumentException("대표 이미지 URL은 http(s):// 로 시작하는 이미지 주소(jpg, png, gif, webp)여야 합니다.");
+        }
+        return imageUrl;
     }
 
     private LocalDate parseDate(String date) {
