@@ -56,10 +56,10 @@
               <c:otherwise>
                 <c:forEach var="i" items="${recentInquiries}">
                   <tr onclick="location.href='${pageContext.request.contextPath}/admin/inquiries?id=${i.id}'">
-                    <td><span class="badge-tag pending">${i.type}</span></td>
-                    <td style="font-weight:700">${i.name}</td>
+                    <td><span class="badge-tag pending"><c:out value="${i.type}" /></span></td>
+                    <td style="font-weight:700"><c:out value="${i.name}" /></td>
                     <td style="color:var(--soft);max-width:380px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">
-                      ${fn:substring(i.message, 0, fn:length(i.message) > 80 ? 80 : fn:length(i.message))}
+                      <c:out value="${fn:substring(i.message, 0, fn:length(i.message) > 80 ? 80 : fn:length(i.message))}" />
                     </td>
                     <td style="color:var(--muted)">${i.createdAtDisplay}</td>
                     <td class="actions"><a class="btn btn-line btn-sm" href="${pageContext.request.contextPath}/admin/inquiries?id=${i.id}">보기 →</a></td>
@@ -87,7 +87,7 @@
                   <c:forEach var="n" items="${recentNotices}">
                     <tr onclick="location.href='${pageContext.request.contextPath}/admin/notices'">
                       <td><span class="badge-tag ${n.type == 'data' ? 'data' : 'notice'}">${n.type == 'data' ? '자료' : '공지'}</span></td>
-                      <td style="font-weight:600">${n.title}</td>
+                      <td style="font-weight:600"><c:out value="${n.title}" /></td>
                       <td style="color:var(--muted)">${n.postDate}</td>
                     </tr>
                   </c:forEach>
@@ -111,7 +111,7 @@
                   <c:forEach var="p" items="${recentNews}">
                     <tr onclick="location.href='${pageContext.request.contextPath}/admin/news'">
                       <td><span class="badge-tag ${p.category}">${fn:toUpperCase(p.category)}</span></td>
-                      <td style="font-weight:600">${p.title}</td>
+                      <td style="font-weight:600"><c:out value="${p.title}" /></td>
                       <td style="color:var(--muted)">${p.postDate}</td>
                     </tr>
                   </c:forEach>

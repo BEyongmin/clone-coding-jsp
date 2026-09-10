@@ -28,19 +28,19 @@
 
     <!-- 탭 -->
     <div class="tabs">
-      <a href="${pageContext.request.contextPath}/notices?type=all&sort=${sort}"
+      <a href="${pageContext.request.contextPath}/notices?type=all&sort=<c:out value="${sort}"/>"
          class="tab ${type == 'all' ? 'active' : ''}">전체 <span class="count">${allCount}</span></a>
-      <a href="${pageContext.request.contextPath}/notices?type=notice&sort=${sort}"
+      <a href="${pageContext.request.contextPath}/notices?type=notice&sort=<c:out value="${sort}"/>"
          class="tab ${type == 'notice' ? 'active' : ''}">공지사항 <span class="count">${noticeCount}</span></a>
-      <a href="${pageContext.request.contextPath}/notices?type=data&sort=${sort}"
+      <a href="${pageContext.request.contextPath}/notices?type=data&sort=<c:out value="${sort}"/>"
          class="tab ${type == 'data' ? 'active' : ''}">자료실 <span class="count">${dataCount}</span></a>
     </div>
 
     <!-- 검색 + 정렬 -->
     <form class="toolbar" method="get" action="${pageContext.request.contextPath}/notices">
-      <input type="hidden" name="type" value="${type}" />
+      <input type="hidden" name="type" value="<c:out value="${type}" />" />
       <div class="search">
-        <input type="text" name="keyword" value="${keyword}" placeholder="제목으로 검색하기" />
+        <input type="text" name="keyword" value="<c:out value="${keyword}" />" placeholder="제목으로 검색하기" />
       </div>
       <select name="sort" class="sort" onchange="this.form.submit()">
         <option value="new" ${sort == 'new' ? 'selected' : ''}>최신순</option>
@@ -60,7 +60,7 @@
             <c:otherwise>공지</c:otherwise>
           </c:choose>
         </span>
-          <span class="notice-title">${notice.title}</span>
+          <span class="notice-title"><c:out value="${notice.title}" /></span>
           <span class="notice-meta">${notice.postDate}
             <c:choose>
               <c:when test="${notice.type == 'notice'}"> · 조회 ${notice.viewCount}</c:when>

@@ -44,8 +44,8 @@
           </div>
           <div class="nbody">
             <span class="ntag">${fn:toUpperCase(news.category)}</span>
-            <h4>${news.title}</h4>
-            <p>${news.excerpt}</p>
+              <h4><c:out value="${news.title}" /></h4>
+              <p><c:out value="${news.excerpt}" /></p>
             <div class="nmeta">${news.postDate}</div>
           </div>
         </article>

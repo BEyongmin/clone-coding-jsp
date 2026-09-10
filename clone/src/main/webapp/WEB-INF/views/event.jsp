@@ -67,8 +67,8 @@
       <c:forEach var="news" items="${cases}">
         <div class="case reveal">
           <span class="tag">${fn:toUpperCase(news.category)}</span>
-          <h4>${news.title}</h4>
-          <p>${news.excerpt}</p>
+          <h4><c:out value="${news.title}" /></h4>
+          <p><c:out value="${news.excerpt}" /></p>
           <div class="meta">${news.postDate}</div>
         </div>
       </c:forEach>

@@ -6,7 +6,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>${news.title} — B.POINT</title>
+  <title><c:out value="${news.title}" /> — B.POINT</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Pretendard:wght@400;500;600;700;800;900&family=Archivo+Black&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="${pageContext.request.contextPath}/styles.css" />
@@ -22,29 +22,29 @@
       <a href="${pageContext.request.contextPath}/news">소식</a> &nbsp;/&nbsp; ${fn:toUpperCase(news.category)}
     </div>
     <div class="post-header">
-      <h1><span class="tag">[${fn:toUpperCase(news.category)}]</span>${news.title}</h1>
+      <h1><span class="tag">[${fn:toUpperCase(news.category)}]</span><c:out value="${news.title}" /></h1>
       <div class="post-meta">${news.postDate}</div>
     </div>
     <div class="post-image"><img src="${pageContext.request.contextPath}/assets/images/헤더 로고.png" alt=""></div>
     <div class="post-body">
       <c:forEach var="para" items="${contentParagraphs}">
-        <p>${para}</p>
+        <p><c:out value="${para}" /></p>
       </c:forEach>
     </div>
     <nav class="post-nav">
       <c:if test="${not empty prevNews}">
         <div class="row">
           <div class="dir">이전글</div>
-          <a href="${pageContext.request.contextPath}/news-detail/${prevNews.id}">
-            <span class="cat">[${fn:toUpperCase(prevNews.category)}]</span>${prevNews.title}
-          </a>
+        <a href="${pageContext.request.contextPath}/news-detail/${prevNews.id}">
+          <span class="cat">[${fn:toUpperCase(prevNews.category)}]</span><c:out value="${prevNews.title}" />
+        </a>
         </div>
       </c:if>
       <c:if test="${not empty nextNews}">
         <div class="row">
           <div class="dir">다음글</div>
           <a href="${pageContext.request.contextPath}/news-detail/${nextNews.id}">
-            <span class="cat">[${fn:toUpperCase(nextNews.category)}]</span>${nextNews.title}
+            <span class="cat">[${fn:toUpperCase(nextNews.category)}]</span><c:out value="${nextNews.title}" />
           </a>
         </div>
       </c:if>

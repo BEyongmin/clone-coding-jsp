@@ -132,8 +132,8 @@
           <div class="news-thumb ${colors[status.index % 3]}"><img src="${pageContext.request.contextPath}/assets/images/헤더 로고.png" alt="" class="news-mark" /></div>
           <div class="news-body">
             <span class="news-tag">${fn:toUpperCase(news.category)}</span>
-            <h4>${news.title}</h4>
-            <p>${news.excerpt}</p>
+            <h4><c:out value="${news.title}" /></h4>
+            <p><c:out value="${news.excerpt}" /></p>
             <div class="news-meta">${news.postDate}</div>
           </div>
         </article>
