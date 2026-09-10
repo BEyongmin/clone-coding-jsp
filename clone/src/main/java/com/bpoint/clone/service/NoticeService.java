@@ -27,7 +27,7 @@ public class NoticeService {
 
     private final NoticeRepository noticeRepository;
 
-        @Value("${app.upload-dir:/app/uploads/}")
+    @Value("${app.upload-dir:/app/uploads/}")
     private String uploadDir;
 
     public List<Notice> getAllNotices() {

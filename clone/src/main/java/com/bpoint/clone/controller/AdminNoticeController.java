@@ -99,4 +99,10 @@ public class AdminNoticeController {
     public ResponseEntity<String> handleValidationError(IllegalArgumentException e) {
         return ResponseEntity.badRequest().body(e.getMessage());
     }
+
+    @ExceptionHandler(org.springframework.web.multipart.MaxUploadSizeExceededException.class)
+    @ResponseBody
+    public ResponseEntity<String> handleFileSizeError(org.springframework.web.multipart.MaxUploadSizeExceededException e) {
+        return ResponseEntity.badRequest().body("파일 용량이 너무 큽니다. 10MB 이하 파일만 업로드 가능합니다.");
+    }
 }
