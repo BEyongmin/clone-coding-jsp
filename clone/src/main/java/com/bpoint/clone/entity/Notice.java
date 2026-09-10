@@ -41,4 +41,7 @@ public class Notice {
     @Column(name = "created_at")
     private LocalDateTime createdAt;
     
+    public boolean isRecent() {
+    return postDate != null && postDate.isEqual(LocalDate.now());
+    }
 }

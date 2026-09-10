@@ -48,9 +48,12 @@ public class NoticeService {
                 .collect(Collectors.toList());
 
         if (sort.equals("old")) {
-            filtered.sort(Comparator.comparing(Notice::getPostDate));
+            filtered.sort(Comparator.comparing(Notice::getPostDate)
+                    .thenComparing(Notice::getCreatedAt));
         } else {
-            filtered.sort(Comparator.comparing(Notice::getPostDate).reversed());
+            filtered.sort(Comparator.comparing(Notice::getPostDate)
+                    .thenComparing(Notice::getCreatedAt)
+                    .reversed());
         }
 
         return filtered;

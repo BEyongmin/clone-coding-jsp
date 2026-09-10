@@ -33,15 +33,15 @@
       </div>
     </div>
 
-    <c:if test="${notice.type == 'data' && not empty notice.fileName}">
-    <div class="post-attach">
-      <div class="lbl">첨부파일</div>
-      <div class="div"></div>
-      <div>
-        <a href="${pageContext.request.contextPath}/download/${notice.id}">(첨부) <c:out value="${notice.fileName}" /></a>
-        <span class="size">(${notice.fileSize})</span>
+    <c:if test="${not empty notice.fileName}">
+      <div class="post-attach">
+        <div class="lbl">첨부파일</div>
+        <div class="div"></div>
+        <div>
+          <a href="${pageContext.request.contextPath}/download/${notice.id}">(첨부) <c:out value="${notice.fileName}" /></a>
+          <span class="size">(${notice.fileSize})</span>
+        </div>
       </div>
-    </div>
     </c:if>
 
     <div class="post-body">

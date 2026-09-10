@@ -53,13 +53,13 @@
     <div class="notice-list">
       <c:forEach var="notice" items="${notices}" varStatus="status">
         <div class="notice-item" onclick="location.href='${pageContext.request.contextPath}/notices/${notice.id}'">
-        <span class="notice-badge ${notice.type == 'data' ? 'data' : (status.first && sort == 'new' ? 'new' : '')}">
-          <c:choose>
-            <c:when test="${notice.type == 'data'}">자료</c:when>
-            <c:when test="${status.first && sort == 'new'}">NEW</c:when>
-            <c:otherwise>공지</c:otherwise>
-          </c:choose>
-        </span>
+          <span class="notice-badge ${notice.type == 'data' ? 'data' : (notice.recent ? 'new' : '')}">
+            <c:choose>
+              <c:when test="${notice.type == 'data'}">자료</c:when>
+              <c:when test="${notice.recent}">NEW</c:when>
+              <c:otherwise>공지</c:otherwise>
+            </c:choose>
+          </span>
           <span class="notice-title"><c:out value="${notice.title}" /></span>
           <span class="notice-meta">${notice.postDate}
             <c:choose>
@@ -67,7 +67,7 @@
               <c:when test="${notice.type == 'data'}"> · ${notice.fileSize}</c:when>
             </c:choose>
         </span>
-          <span class="notice-file">${notice.type == 'data' ? 'PDF ↓' : '자세히 →'}</span>
+          <span class="notice-file">${not empty notice.fileName ? 'PDF ↓' : '자세히 →'}</span>
         </div>
       </c:forEach>
       <c:if test="${empty notices}">
