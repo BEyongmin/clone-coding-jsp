@@ -129,7 +129,9 @@
       <c:set var="colors" value="${fn:split('t1,t2,t3', ',')}" />
       <c:forEach var="news" items="${recentNews}" varStatus="status">
         <article class="news-card" onclick="location.href='${pageContext.request.contextPath}/news-detail/${news.id}'" style="cursor:pointer">
-          <div class="news-thumb ${colors[status.index % 3]}"><img src="${pageContext.request.contextPath}/assets/images/헤더 로고.png" alt="" class="news-mark" /></div>
+        <div class="news-thumb ${empty news.image ? colors[status.index % 3] : 'has-image'}">
+          <img src="${empty news.image ? pageContext.request.contextPath.concat('/assets/images/헤더 로고.png') : news.image}" alt="" class="news-mark" />
+        </div>
           <div class="news-body">
             <span class="news-tag">${fn:toUpperCase(news.category)}</span>
             <h4><c:out value="${news.title}" /></h4>

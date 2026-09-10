@@ -39,8 +39,8 @@
       <c:forEach var="news" items="${newsList}" varStatus="status">
         <article class="ncard" data-cat="${news.category}"
                   onclick="location.href='${pageContext.request.contextPath}/news-detail/${news.id}'">
-          <div class="nimg ${colors[status.index % 6]}">
-            <img src="${pageContext.request.contextPath}/assets/images/헤더 로고.png" alt="">
+          <div class="nimg ${empty news.image ? colors[status.index % 6] : 'has-image'}">
+            <img src="${empty news.image ? pageContext.request.contextPath.concat('/assets/images/헤더 로고.png') : news.image}" alt="">
           </div>
           <div class="nbody">
             <span class="ntag">${fn:toUpperCase(news.category)}</span>

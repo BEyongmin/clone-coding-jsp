@@ -25,7 +25,9 @@
       <h1><span class="tag">[${fn:toUpperCase(news.category)}]</span><c:out value="${news.title}" /></h1>
       <div class="post-meta">${news.postDate}</div>
     </div>
-    <div class="post-image"><img src="${pageContext.request.contextPath}/assets/images/헤더 로고.png" alt=""></div>
+      <div class="post-image ${empty news.image ? '' : 'has-image'}">
+        <img src="${empty news.image ? pageContext.request.contextPath.concat('/assets/images/헤더 로고.png') : news.image}" alt="">
+      </div>
     <div class="post-body">
       <c:forEach var="para" items="${contentParagraphs}">
         <p><c:out value="${para}" /></p>
