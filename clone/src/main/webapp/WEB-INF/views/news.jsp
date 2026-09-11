@@ -37,8 +37,7 @@
     <div class="grid">
       <c:set var="colors" value="${fn:split('a,b,c,d,e,f', ',')}" />
       <c:forEach var="news" items="${newsList}" varStatus="status">
-        <article class="ncard" data-cat="${news.category}"
-                  onclick="location.href='${pageContext.request.contextPath}/news-detail/${news.id}'">
+        <article class="ncard" data-cat="${news.category}" data-id="${news.id}">
           <div class="nimg ${empty news.image ? colors[status.index % 6] : 'has-image'}">
             <img src="${empty news.image ? pageContext.request.contextPath.concat('/assets/images/헤더 로고.png') : news.image}" alt="">
           </div>
@@ -61,6 +60,7 @@
 <jsp:include page="/WEB-INF/views/common/footer.jsp" />
 
 <script>
+  const ctx = '${pageContext.request.contextPath}';
   const filters = document.querySelectorAll('.filter');
   const cards = document.querySelectorAll('.ncard');
   filters.forEach(f => f.addEventListener('click', () => {
@@ -68,6 +68,16 @@
     f.classList.add('active');
     const cat = f.dataset.filter;
     cards.forEach(c => c.style.display = (cat === 'all' || c.dataset.cat === cat) ? '' : 'none');
+  }));
+
+  // ✅ 카드 클릭 시, 현재 활성화된 필터를 함께 실어서 이동
+  cards.forEach(c => c.addEventListener('click', () => {
+    const activeFilter = document.querySelector('.filter.active').dataset.filter;
+    const id = c.dataset.id;
+    const url = activeFilter === 'all'
+      ? `\${ctx}/news-detail/\${id}`
+      : `\${ctx}/news-detail/\${id}?category=\${activeFilter}`;
+    location.href = url;
   }));
 </script>
 </body>

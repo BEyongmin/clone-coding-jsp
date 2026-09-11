@@ -7,6 +7,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.bpoint.clone.entity.News;
 import com.bpoint.clone.service.NewsService;
@@ -33,7 +34,7 @@ public class NewsController {
         }
 
         @GetMapping("/news-detail/{id}")
-        public String detail(@PathVariable Long id, Model model) {
+        public String detail(@PathVariable Long id,@RequestParam(value = "category", required = false) String category , Model model) {
             News news = newsService.getNewsById(id);
 
             List<String> paragraphs = Arrays.stream(news.getContent().split("\n"))
@@ -42,8 +43,9 @@ public class NewsController {
 
             model.addAttribute("news", news);
             model.addAttribute("contentParagraphs", paragraphs); 
-            model.addAttribute("prevNews", newsService.getPrevNews(id));
-            model.addAttribute("nextNews", newsService.getNextNews(id));
+            model.addAttribute("prevNews", newsService.getPrevNews(id, category));
+            model.addAttribute("nextNews", newsService.getNextNews(id, category));
+            model.addAttribute("category", category);
 
             return "news-detail";
         }

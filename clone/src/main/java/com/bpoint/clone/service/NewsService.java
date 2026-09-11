@@ -35,12 +35,18 @@ public class NewsService {
                 .orElseThrow(() -> new IllegalArgumentException("존재하지 않는 소식입니다. id=" + id));
     }
 
-    public News getPrevNews(Long id) {
-        return newsRepository.findTopByIdLessThanOrderByIdDesc(id).orElse(null);
+    public News getPrevNews(Long id, String category) {
+        if (category == null || category.isBlank()) {
+            return newsRepository.findTopByIdLessThanOrderByIdDesc(id).orElse(null);
+        }
+        return newsRepository.findTopByIdLessThanAndCategoryOrderByIdDesc(id, category).orElse(null);
     }
 
-    public News getNextNews(Long id) {
-        return newsRepository.findTopByIdGreaterThanOrderByIdAsc(id).orElse(null);
+    public News getNextNews(Long id, String category) {
+        if (category == null || category.isBlank()) {
+            return newsRepository.findTopByIdGreaterThanOrderByIdAsc(id).orElse(null);
+        }
+        return newsRepository.findTopByIdGreaterThanAndCategoryOrderByIdAsc(id, category).orElse(null);
     }
 
     // 관리자용

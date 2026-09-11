@@ -68,11 +68,15 @@ public class NoticeService {
     }
 
     public Notice getPrevNotice(Long id) {
-    return noticeRepository.findFirstByIdLessThanOrderByIdDesc(id).orElse(null);
+        Notice current = getNoticeById(id);   // 먼저 현재 글 조회
+        return noticeRepository.findPrevNotice(current.getPostDate(), current.getCreatedAt())
+                .orElse(null);
     }
 
     public Notice getNextNotice(Long id) {
-        return noticeRepository.findFirstByIdGreaterThanOrderByIdAsc(id).orElse(null);
+        Notice current = getNoticeById(id);   // 먼저 현재 글 조회
+        return noticeRepository.findNextNotice(current.getPostDate(), current.getCreatedAt())
+                .orElse(null);
     }
 
     // 관리자용

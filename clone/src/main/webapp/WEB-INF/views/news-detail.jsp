@@ -37,15 +37,15 @@
       <c:if test="${not empty prevNews}">
         <div class="row">
           <div class="dir">이전글</div>
-        <a href="${pageContext.request.contextPath}/news-detail/${prevNews.id}">
-          <span class="cat">[${fn:toUpperCase(prevNews.category)}]</span><c:out value="${prevNews.title}" />
-        </a>
+          <a href="${pageContext.request.contextPath}/news-detail/${prevNews.id}${empty category ? '' : '?category='.concat(category)}">
+            <span class="cat">[${fn:toUpperCase(prevNews.category)}]</span><c:out value="${prevNews.title}" />
+          </a>
         </div>
       </c:if>
       <c:if test="${not empty nextNews}">
         <div class="row">
           <div class="dir">다음글</div>
-          <a href="${pageContext.request.contextPath}/news-detail/${nextNews.id}">
+          <a href="${pageContext.request.contextPath}/news-detail/${nextNews.id}${empty category ? '' : '?category='.concat(category)}">
             <span class="cat">[${fn:toUpperCase(nextNews.category)}]</span><c:out value="${nextNews.title}" />
           </a>
         </div>
