@@ -195,4 +195,8 @@ public class NoticeService {
             throw new IllegalArgumentException("제목은 최대 100자까지 입력 가능합니다. (현재 " + title.length() + "자)");
         }
     }
+
+    public void increaseViewCount(Long id) {
+        noticeRepository.incrementViewCount(id);
+    }
 }

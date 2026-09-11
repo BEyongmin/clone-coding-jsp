@@ -43,6 +43,7 @@ public class NoticeController {
 
     @GetMapping("/{id}")
     public String getNoticeById(@PathVariable("id") Long id, Model model) {
+        noticeService.increaseViewCount(id);
         Notice notice = noticeService.getNoticeById(id);
         model.addAttribute("notice", notice);
         model.addAttribute("prevNotice", noticeService.getPrevNotice(id));
