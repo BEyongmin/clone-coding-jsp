@@ -67,18 +67,21 @@ public class NoticeService {
         return all.stream().filter(n -> n.getType().equals(type)).count();
     }
 
-    public Notice getPrevNotice(Long id) {
+    public Notice getPrevNotice(Long id, String type) {
         Notice current = getNoticeById(id);   // 먼저 현재 글 조회
-        return noticeRepository.findPrevNotice(current.getPostDate(), current.getCreatedAt())
-                .orElse(null);
+        if (type == null || type.isBlank() || type.equals("all")) {
+            return noticeRepository.findPrevNotice(current.getPostDate(),current.getCreatedAt()).orElse(null);
+        }
+        return noticeRepository.findPrevNoticeByType(type, current.getPostDate(),current.getCreatedAt()).orElse(null);
     }
 
-    public Notice getNextNotice(Long id) {
-        Notice current = getNoticeById(id);   // 먼저 현재 글 조회
-        return noticeRepository.findNextNotice(current.getPostDate(), current.getCreatedAt())
-                .orElse(null);
-    }
-
+    public Notice getNextNotice(Long id, String type) {
+        Notice current = getNoticeById(id);
+            if (type == null || type.isBlank() || type.equals("all")) {
+                return noticeRepository.findNextNotice(current.getPostDate(), current.getCreatedAt()).orElse(null);
+            }
+            return noticeRepository.findNextNoticeByType(type, current.getPostDate(), current.getCreatedAt()).orElse(null);
+        }
     // 관리자용
 
     public List<Notice> getAllForAdmin() {

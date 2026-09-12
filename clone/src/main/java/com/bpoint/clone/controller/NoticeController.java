@@ -42,12 +42,14 @@ public class NoticeController {
     }
 
     @GetMapping("/{id}")
-    public String getNoticeById(@PathVariable("id") Long id, Model model) {
+    public String getNoticeById(@PathVariable("id") Long id,
+                                @RequestParam (value = "type",required = false) String type, Model model) {
         noticeService.increaseViewCount(id);
         Notice notice = noticeService.getNoticeById(id);
         model.addAttribute("notice", notice);
-        model.addAttribute("prevNotice", noticeService.getPrevNotice(id));
-        model.addAttribute("nextNotice", noticeService.getNextNotice(id));
+        model.addAttribute("prevNotice", noticeService.getPrevNotice(id,type));
+        model.addAttribute("nextNotice", noticeService.getNextNotice(id,type));
+        model.addAttribute("type",type);
         return "notice/detail";
     }
 

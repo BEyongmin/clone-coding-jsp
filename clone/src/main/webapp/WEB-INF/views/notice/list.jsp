@@ -52,7 +52,7 @@
     <!-- 목록 -->
     <div class="notice-list">
       <c:forEach var="notice" items="${notices}" varStatus="status">
-        <div class="notice-item" onclick="location.href='${pageContext.request.contextPath}/notices/${notice.id}'">
+        <div class="notice-item" onclick="location.href='${pageContext.request.contextPath}/notices/${notice.id}?type=${type}'">
           <span class="notice-badge ${notice.type == 'data' ? 'data' : (notice.recent ? 'new' : '')}">
             <c:choose>
               <c:when test="${notice.type == 'data'}">자료</c:when>

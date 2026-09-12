@@ -50,13 +50,13 @@
 
     <nav class="post-nav">
       <c:if test="${not empty prevNotice}">
-        <a href="${pageContext.request.contextPath}/notices/${prevNotice.id}" class="row">
+        <a href="${pageContext.request.contextPath}/notices/${prevNotice.id}?type=${type}" class="row">
           <div class="dir">이전글</div>
           <div><span class="cat">[${prevNotice.type == 'data' ? '자료' : '공지'}]</span><c:out value="${prevNotice.title}" /></div>
         </a>
       </c:if>
       <c:if test="${not empty nextNotice}">
-        <a href="${pageContext.request.contextPath}/notices/${nextNotice.id}" class="row">
+        <a href="${pageContext.request.contextPath}/notices/${nextNotice.id}?type=${type}" class="row">
           <div class="dir">다음글</div>
           <div><span class="cat">[${nextNotice.type == 'data' ? '자료' : '공지'}]</span><c:out value="${nextNotice.title}" /></div>
         </a>

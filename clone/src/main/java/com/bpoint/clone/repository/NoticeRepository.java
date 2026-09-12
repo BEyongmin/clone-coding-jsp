@@ -41,4 +41,28 @@ public interface NoticeRepository extends JpaRepository<Notice, Long> {
     @Transactional 
     @Query("UPDATE Notice n SET n.viewCount = n.viewCount + 1 WHERE n.id = :id")
     void incrementViewCount(Long id);
+
+    @Query(value = """
+            SELECT * FROM notices n
+            WHERE n.type = :type
+                AND ((n.post_date < :postDate)
+                OR (n.post_date = :postDate AND n.created_at < :createdAt))
+            ORDER BY n.post_date DESC, n.created_at DESC
+            LIMIT 1
+            """, nativeQuery = true)
+    Optional<Notice> findPrevNoticeByType(@Param("type") String type,
+                                        @Param("postDate") LocalDate postDate,
+                                        @Param("createdAt") LocalDateTime createdAt);
+
+    @Query(value = """
+            SELECT * FROM notices n
+            WHERE n.type = :type
+                AND ((n.post_date > :postDate)
+                OR (n.post_date = :postDate AND n.created_at > :createdAt))
+            ORDER BY n.post_date ASC, n.created_at ASC
+            LIMIT 1
+            """, nativeQuery = true)
+    Optional<Notice> findNextNoticeByType(@Param("type") String type,
+                                        @Param("postDate") LocalDate postDate,
+                                        @Param("createdAt") LocalDateTime createdAt);
 }
